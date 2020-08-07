@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
@@ -6,12 +7,12 @@
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!--  스프링 시큐리티 오류에 대한 메시지 내용을 담고있는 경로 지정-->
@@ -26,11 +27,11 @@
 	</bean>
 	
 	<bean id="messageSourceAccessor" class="org.springframework.context.support.MessageSourceAccessor">
-		<constructor-arg ref="messageSource"/>
+		<constructor-arg ref="messageSource" />
 	</bean>
 	
 	<bean id="message" class="org.yona.util.MessageUtils">
-		<property name="messageSourceAccessor" ref="messageSourceAccessor"/>
+		<property name="messageSourceAccessor" ref="messageSourceAccessor" />
 	</bean>
 	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -45,7 +46,7 @@
 	<!-- SqlSessionFactory를 생성해 주는 빈-->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<!--	사용할 커넥션 풀과 연결한다.  -->
-		<property name="dataSource" ref="dataSource"/>
+		<property name="dataSource" ref="dataSource" />
 		<!--  mybatis-confg.xml파일이 스프링이 동작할 때 같이 동작하도록 설정 -->
 		<!--	myBatis 환경설정 파일을 무엇으로 할지를 등록한다  -->	
 		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
