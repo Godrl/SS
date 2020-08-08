@@ -52,6 +52,7 @@ public class LoginServiceImp implements UserDetailsService,LoginService{
 
 	@Override
 	public void insertUser(LoginVO Lvo) throws Exception {
+		logger.info("=====사용자 등록=====");
 		String encodePw = PwEncoder.encode(Lvo.getPassword());
 		Lvo.setPassword(encodePw);
 		
