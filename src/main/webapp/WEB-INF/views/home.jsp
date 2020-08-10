@@ -28,6 +28,7 @@
 
 <sec:authorize access="isAnonymous()">
    <h5><a href="/signin">로그인</a></h5>
+   <h5><a href='<c:url value="/signup"/>'>SignUp</a></h5>
 </sec:authorize>
 <sec:authorize access="isAuthenticated()">
 	<a href="#" onclick="document.getElementById('logout-form').submit();">로그아웃</a>

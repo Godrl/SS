@@ -1,5 +1,7 @@
 package org.yona.login;
 
+import javax.inject.Inject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class LoginController {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+	
+	@Inject
+	private LoginService service;
 	
 	@RequestMapping(value="/signin")
 	public String singinPOST() throws Exception {
@@ -42,6 +47,7 @@ public class LoginController {
 	@RequestMapping(value="/signup", method=RequestMethod.POST)
 	public String signupPOST() throws Exception{
 		logger.info("=====signup POST=====");
+		
 		
 		return "home";
 	}
