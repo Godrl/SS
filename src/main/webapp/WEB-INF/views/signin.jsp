@@ -88,8 +88,8 @@ li {
 
 <script>
 	var result ='${errormsg}';
+	
 	if(result == '${errormsg}'){
 		alert(result);
 	}
-
 </script>

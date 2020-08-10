@@ -43,5 +43,13 @@
 <a href='<c:url value="/user/main"/>'>USER</a>
 <a href='<c:url value="/admin/main"/>'>ADMIN</a>
 
-
 <%@ include file="include/footer.jsp" %>
+
+<script>
+	var result = '${msg}';
+	
+	if(result == 'register'){
+		alert("환영합니다 로그인해주세요");
+	}
+		
+</script>

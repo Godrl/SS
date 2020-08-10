@@ -7,6 +7,7 @@ public class LoginVO{
 	private String Authority;
 	private boolean Enabled;
 	private String Name;
+	private String Email;
 	private int FailCnt;
 	
 	
@@ -45,6 +46,18 @@ public class LoginVO{
 	}
 	public void setFailCnt(int failCnt) {
 		FailCnt = failCnt;
+	}
+	
+	public String getEmail() {
+		return Email;
+	}
+	public void setEmail(String email) {
+		Email = email;
+	}
+	@Override
+	public String toString() {
+		return "LoginVO [ID=" + ID + ", Password=" + Password + ", Authority=" + Authority + ", Enabled=" + Enabled
+				+ ", Name=" + Name + ", FailCnt=" + FailCnt + "]";
 	}
 	
 

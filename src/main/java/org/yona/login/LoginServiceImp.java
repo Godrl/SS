@@ -57,7 +57,7 @@ public class LoginServiceImp implements UserDetailsService,LoginService{
 		Lvo.setPassword(encodePw);
 		
 		dao.insertUser(Lvo);
-		logger.info("=====password===== "+encodePw);
+		logger.info("password =  "+encodePw);
 		
 	}
 

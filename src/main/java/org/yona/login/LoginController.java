@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class LoginController {
@@ -39,15 +40,19 @@ public class LoginController {
 		logger.info("=====denyaccess=====");
 	}
 	
-	@RequestMapping(value="signup", method=RequestMethod.GET)
+	@RequestMapping(value="/signup", method=RequestMethod.GET)
 	public void signupGET() throws Exception{
 		logger.info("=====signup GET=====");
 	}
 	
 	@RequestMapping(value="/signup", method=RequestMethod.POST)
-	public String signupPOST() throws Exception{
+	public String signupPOST(LoginVO vo,RedirectAttributes rttr) throws Exception{
 		logger.info("=====signup POST=====");
+		logger.info("Member = "+vo.toString());
 		
+		service.insertUser(vo);
+		
+		rttr.addFlashAttribute("msg", "register");
 		
 		return "home";
 	}
