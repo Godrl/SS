@@ -76,20 +76,13 @@ li {
 				</div>
 			</form>
 		</div>
-		<c:if test="${not empty errormsg}">
-			<p><font color="red"> ${errormsg }</font></p>
-		</c:if>
+		<span>
+			<c:if test="${not empty errormsg}">
+				<p><font color="red"> ${errormsg }</font></p>
+			</c:if>
+		</span>
 	</div>
 </section>
 
 
 <%@ include file="include/footer.jsp"%>
-
-
-<script>
-	var result ='${errormsg}';
-	
-	if(result == '${errormsg}'){
-		alert(result);
-	}
-</script>

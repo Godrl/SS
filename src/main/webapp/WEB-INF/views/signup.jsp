@@ -7,7 +7,7 @@
 </head>
 <body>
 	<form action="/signup" method="post">
-		<input type="text" name="Name" placeholder="NAME"/>
+		<input type="text" name="ID" placeholder="ID"/>
 		<input type="text" name="Email" placeholder="EMAIL"/>
 		<input type="password" name="Password" placeholder="PASSWORD"/>
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />

@@ -11,6 +11,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.yona.login.LoginServiceImp;
 
 public class Authentication implements AuthenticationProvider{
@@ -19,6 +20,9 @@ public class Authentication implements AuthenticationProvider{
 	
 	@Inject
 	private LoginServiceImp service;
+	
+	@Inject
+	private BCryptPasswordEncoder pwEncoder;
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -29,9 +33,11 @@ public class Authentication implements AuthenticationProvider{
 		
 		UserDetailsImp user = (UserDetailsImp)service.loadUserByUsername(userid);
 		
-		logger.info("userid = "+user.getUsername() + " userpw = "+user.getPassword());
+//		스프링시큐리티 버전업데이트로 비밀번호앞에 식별자 {noop}이 추가되어 비밀번호를 비교할 때 noop을 빼고 비교한다.
+		String encodepw = user.getPassword().substring(6);
+		logger.info("userpw = "+userpw + " encodeuserpw = "+encodepw);
 		
-		if(!matchPassword(userpw,user.getPassword())) {
+		if(!pwEncoder.matches(userpw, encodepw)) {
 			logger.info("=====비밀번호가 불일치=====");
 			throw new BadCredentialsException(userid);
 		}
@@ -46,15 +52,9 @@ public class Authentication implements AuthenticationProvider{
 		return new UsernamePasswordAuthenticationToken(user,user,authorities);
 	}
 
-	
-	private boolean matchPassword(String userpw, String password) {
-		return userpw.equals(password);
-	}
-
-
 	@Override
 	public boolean supports(Class<?> authentication) {
-		return true;
+		return authentication.equals(UsernamePasswordAuthenticationToken.class);
 	}
 
 

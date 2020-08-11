@@ -33,7 +33,7 @@
 		<![CDATA[
 			UPDATE	USERS
 			SET		FAILCOUNT = 0
-			WEHRE	ID=#{userid}			
+			WHERE	ID=#{userid}			
 		]]>
 		
 	</update>
@@ -48,8 +48,8 @@
 	
 	<insert id="signUp">
 		<![CDATA[
-			INSERT INTO		USERS(ID,PASSWORD,NAME)
-			VALUES			(#{email}, #{password}, #{name})
+			INSERT INTO		USERS(ID,EMAIL,PASSWORD)
+			VALUES			(#{id} ,#{email}, #{password}})
 		]]>
 	</insert>
 	

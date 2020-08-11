@@ -18,7 +18,7 @@ public class LoginServiceImp implements UserDetailsService,LoginService{
 	private LoginDAO dao;
 	
 	@Inject
-	private PasswordEncoder PwEncoder;
+	private PasswordEncoder pwEncoder;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -53,11 +53,11 @@ public class LoginServiceImp implements UserDetailsService,LoginService{
 	@Override
 	public void insertUser(LoginVO Lvo) throws Exception {
 		logger.info("=====사용자 등록=====");
-		String encodePw = PwEncoder.encode(Lvo.getPassword());
+		String encodePw = pwEncoder.encode(Lvo.getPassword());
 		Lvo.setPassword(encodePw);
 		
 		dao.insertUser(Lvo);
-		logger.info("password =  "+encodePw);
+		logger.info("password = "+encodePw);
 		
 	}
 

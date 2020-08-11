@@ -44,7 +44,9 @@
 	
 	<authentication-manager>
 		<authentication-provider ref="Authentication"/>
-		<authentication-provider user-service-ref="UserService"/>
+		<authentication-provider user-service-ref="UserService">
+			<password-encoder ref="bcryptPasswordEncoder"/>
+		</authentication-provider>
 	</authentication-manager>
 	
 	<beans:bean id="UserService" class="org.yona.login.LoginServiceImp"></beans:bean>

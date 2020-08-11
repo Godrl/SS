@@ -41,7 +41,9 @@
 
 <a href='<c:url value="/"/>'>GUEST</a>
 <a href='<c:url value="/user/main"/>'>USER</a>
-<a href='<c:url value="/admin/main"/>'>ADMIN</a>
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+	<a href='<c:url value="/admin/main"/>'>ADMIN</a>
+</sec:authorize>
 
 <%@ include file="include/footer.jsp" %>
 
